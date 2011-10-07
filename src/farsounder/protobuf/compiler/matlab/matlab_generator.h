@@ -48,9 +48,6 @@ class FileDescriptor;
 namespace io {
 class Printer;
 }  // namespace io
-namespace compiler {
-class OutputDirectory;
-}  // namespace compiler
 }  // namespace protobuf
 }  // namespace google
 
@@ -63,7 +60,7 @@ namespace matlab {
 // header.  If you create your own protocol compiler binary and you want
 // it to support C++ output, you can do so by registering an instance of this
 // CodeGenerator with the CommandLineInterface in your main() function.
-class LIBPROTOC_EXPORT MatlabGenerator : 
+class LIBPROTOC_EXPORT MatlabGenerator :
   public ::google::protobuf::compiler::CodeGenerator {
  public:
   MatlabGenerator();
@@ -72,7 +69,7 @@ class LIBPROTOC_EXPORT MatlabGenerator :
   // implements CodeGenerator ----------------------------------------
   bool Generate(const ::google::protobuf::FileDescriptor* file,
                 const ::std::string& parameter,
-                ::google::protobuf::compiler::OutputDirectory* output_directory,
+                ::google::protobuf::compiler::GeneratorContext* output_directory,
                 ::std::string* error) const;
 
   enum MatlabType {
@@ -87,7 +84,7 @@ class LIBPROTOC_EXPORT MatlabGenerator :
     MATLABTYPE_MESSAGE    = 9,    // TYPE_MESSAGE, TYPE_GROUP
     MATLABTYPE_ENUM       = 10,   // TYPE_ENUM
 
-    MAX_MATLABTYPE        = 10     
+    MAX_MATLABTYPE        = 10
 
   };
   static const MatlabType kTypeToMatlabTypeMap[
@@ -146,7 +143,7 @@ class LIBPROTOC_EXPORT MatlabGenerator :
   mutable ::google::protobuf::internal::Mutex mutex_;
   mutable const ::google::protobuf::FileDescriptor*
       file_;  // Set in Generate().  Under mutex_.
-  mutable ::google::protobuf::compiler::OutputDirectory*
+  mutable ::google::protobuf::compiler::GeneratorContext*
       output_directory_;  // Set in Generate().
 
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(MatlabGenerator);

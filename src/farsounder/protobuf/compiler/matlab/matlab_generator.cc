@@ -63,7 +63,7 @@ using ::google::protobuf::SimpleDtoa;
 using ::google::protobuf::SimpleFtoa;
 using ::google::protobuf::SimpleItoa;
 using ::google::protobuf::StringReplace;
-using ::google::protobuf::compiler::OutputDirectory;
+using ::google::protobuf::compiler::GeneratorContext;
 using ::google::protobuf::internal::MutexLock;
 using ::google::protobuf::io::Printer;
 
@@ -141,7 +141,7 @@ MatlabGenerator::~MatlabGenerator() {}
 
 bool MatlabGenerator::Generate(const FileDescriptor* file,
                                const string& parameter,
-                               OutputDirectory* output_directory,
+                               GeneratorContext* output_directory,
                                string* error) const {
   MutexLock lock(&mutex_);
   file_ = file;
@@ -169,7 +169,7 @@ void MatlabGenerator::PrintDescriptorFunction(
   string filename = DescriptorFunctionName(descriptor);
   filename += ".m";
   google::protobuf::internal::scoped_ptr<
-    google::protobuf::io::ZeroCopyOutputStream> 
+    google::protobuf::io::ZeroCopyOutputStream>
       output(output_directory_->Open(filename));
   Printer printer(output.get(), '$');
 
