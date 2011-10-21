@@ -89,8 +89,7 @@ class LIBPROTOC_EXPORT MatlabGenerator :
   };
   static const MatlabType kTypeToMatlabTypeMap[
     ::google::protobuf::FieldDescriptor::MAX_TYPE + 1];
-  static const ::std::string
-      MatlabGenerator::kMatlabTypeToString[MAX_MATLABTYPE + 1];
+  static const ::std::string kMatlabTypeToString[MAX_MATLABTYPE + 1];
 
  private:
   void PrintMessageFunctions() const;
