@@ -8,3 +8,4 @@ Maintainer:
 
 Patch contributors:
   Przemek Lach <przemyslawlach@gmail.com>
+  Torsten Pfuetzenreuter <torsten.pf@gmail.com>
