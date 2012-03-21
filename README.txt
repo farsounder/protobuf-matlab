@@ -18,7 +18,7 @@ Building protoc with Matlab support
    svn co http://protobuf.googlecode.com/svn/tags/2.4.0a protobuf
 
 2. Get the protobuf-matlab source:
-   hg clone https://code.google.com/p/protobuf-matlab/ protobuf-matlab
+   git clone https://code.google.com/p/protobuf-matlab/
 
 3. Add the protobuf-matlab src files to the Google Protobuf src:
    cp -r protobuf-matlab/src protobuf
