@@ -26,7 +26,7 @@ git clone https://github.com/farsounder/protobuf-matlab.git
 
 3. Add the protobuf-matlab src files to the Google Protobuf src:
 ```
-cp -r protobuf-matlab/src protobuf
+cp -r protobuf-matlab/{src,cmake} protobuf
 ```
 
 4. Compile the modified protobuf project:
