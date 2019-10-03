@@ -64,7 +64,7 @@ class LIBPROTOC_EXPORT MatlabGenerator :
   public ::google::protobuf::compiler::CodeGenerator {
  public:
   MatlabGenerator();
-  ~MatlabGenerator();
+  virtual ~MatlabGenerator();
 
   // implements CodeGenerator ----------------------------------------
   bool Generate(const ::google::protobuf::FileDescriptor* file,

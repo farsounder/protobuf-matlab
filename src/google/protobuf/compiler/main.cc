@@ -1,6 +1,6 @@
 // Protocol Buffers - Google's data interchange format
 // Copyright 2008 Google Inc.  All rights reserved.
-// http://code.google.com/p/protobuf/
+// https://developers.google.com/protocol-buffers/
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
@@ -30,37 +30,88 @@
 
 // Author: kenton@google.com (Kenton Varda)
 
-#include <google/protobuf/compiler/command_line_interface.h>
 #include <google/protobuf/compiler/cpp/cpp_generator.h>
-#include <google/protobuf/compiler/python/python_generator.h>
 #include <google/protobuf/compiler/java/java_generator.h>
+#include <google/protobuf/compiler/command_line_interface.h>
+#include <google/protobuf/compiler/python/python_generator.h>
+
+#include <google/protobuf/compiler/csharp/csharp_generator.h>
+#include <google/protobuf/compiler/js/js_generator.h>
+#include <google/protobuf/compiler/objectivec/objectivec_generator.h>
+#include <google/protobuf/compiler/php/php_generator.h>
+#include <google/protobuf/compiler/ruby/ruby_generator.h>
+
 #include <farsounder/protobuf/compiler/matlab/matlab_generator.h>
 
+#include <google/protobuf/port_def.inc>
 
-int main(int argc, char* argv[]) {
+namespace google {
+namespace protobuf {
+namespace compiler {
 
-  google::protobuf::compiler::CommandLineInterface cli;
+int ProtobufMain(int argc, char* argv[]) {
+
+  CommandLineInterface cli;
   cli.AllowPlugins("protoc-");
 
   // Proto2 C++
-  google::protobuf::compiler::cpp::CppGenerator cpp_generator;
-  cli.RegisterGenerator("--cpp_out", &cpp_generator,
+  cpp::CppGenerator cpp_generator;
+  cli.RegisterGenerator("--cpp_out", "--cpp_opt", &cpp_generator,
                         "Generate C++ header and source.");
 
+#ifdef GOOGLE_PROTOBUF_RUNTIME_INCLUDE_BASE
+  cpp_generator.set_opensource_runtime(true);
+  cpp_generator.set_runtime_include_base(GOOGLE_PROTOBUF_RUNTIME_INCLUDE_BASE);
+#endif
+
   // Proto2 Java
-  google::protobuf::compiler::java::JavaGenerator java_generator;
-  cli.RegisterGenerator("--java_out", &java_generator,
+  java::JavaGenerator java_generator;
+  cli.RegisterGenerator("--java_out", "--java_opt", &java_generator,
                         "Generate Java source file.");
 
+
   // Proto2 Python
-  google::protobuf::compiler::python::Generator py_generator;
+  python::Generator py_generator;
   cli.RegisterGenerator("--python_out", &py_generator,
                         "Generate Python source file.");
 
-  // Proto2 Matlab
+  // PHP
+  php::Generator php_generator;
+  cli.RegisterGenerator("--php_out", &php_generator,
+                        "Generate PHP source file.");
+
+  // Ruby
+  ruby::Generator rb_generator;
+  cli.RegisterGenerator("--ruby_out", &rb_generator,
+                        "Generate Ruby source file.");
+
+  // CSharp
+  csharp::Generator csharp_generator;
+  cli.RegisterGenerator("--csharp_out", "--csharp_opt", &csharp_generator,
+                        "Generate C# source file.");
+
+  // Objective C
+  objectivec::ObjectiveCGenerator objc_generator;
+  cli.RegisterGenerator("--objc_out", "--objc_opt", &objc_generator,
+                        "Generate Objective C header and source.");
+
+  // JavaScript
+  js::Generator js_generator;
+  cli.RegisterGenerator("--js_out", &js_generator,
+                        "Generate JavaScript source.");
+
+  // Matlab
   farsounder::protobuf::compiler::matlab::MatlabGenerator matlab_generator;
   cli.RegisterGenerator("--matlab_out", &matlab_generator,
                         "Generate Matlab M files.");
 
   return cli.Run(argc, argv);
+}
+
+}  // namespace compiler
+}  // namespace protobuf
+}  // namespace google
+
+int main(int argc, char* argv[]) {
+  return PROTOBUF_NAMESPACE_ID::compiler::ProtobufMain(argc, argv);
 }
