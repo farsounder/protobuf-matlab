@@ -36,6 +36,7 @@ git submodule update --init --recursive
 mkdir build && cd build
 cmake ..
 make
+sudo make install
 ```
 
 This should yield a protoc executable with a --matlab_out option. You can now
