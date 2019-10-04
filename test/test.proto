@@ -32,6 +32,8 @@
 //
 // A proto file used for some unit tests.
 
+syntax = "proto2";
+
 package test;
 import "test_import.proto";
 

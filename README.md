@@ -32,6 +32,7 @@ cp -r protobuf-matlab/{src,cmake} protobuf
 4. Compile the modified protobuf project:
 ```
 cd protobuf/cmake
+git submodule update --init --recursive
 mkdir build && cd build
 cmake ..
 make
@@ -41,7 +42,7 @@ This should yield a protoc executable with a --matlab_out option. You can now
 use protoc to generate Matlab reading and writing code for your .proto file(s).
 
 ```
-protoc --matlab_out test.proto
+protoc test.proto --matlab_out=./
 ```
 
 ## Matlab support library setup
