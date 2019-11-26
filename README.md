@@ -7,7 +7,7 @@ http://code.google.com/p/protobuf-matlab/
 
 ## Overview
 
-This package provides a Matlab code generator for version 2.4.1 of Google's
+This package provides a Matlab code generator for version 3.11.0 of Google's
 Protocol Buffers compiler (protoc) as well as support libraries for the
 generated Matlab code.
 
