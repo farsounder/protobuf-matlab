@@ -43,6 +43,8 @@
 #include <utility>
 #include <vector>
 
+#include <google/protobuf/compiler/code_generator.h>
+#include <google/protobuf/compiler/plugin.h>
 #include <google/protobuf/io/printer.h>
 #include <google/protobuf/io/zero_copy_stream.h>
 #include <google/protobuf/descriptor.pb.h>
@@ -168,8 +170,7 @@ void MatlabGenerator::PrintDescriptorFunction(
 
   string filename = DescriptorFunctionName(descriptor);
   filename += ".m";
-  google::protobuf::internal::scoped_ptr<
-    google::protobuf::io::ZeroCopyOutputStream>
+  std::unique_ptr<google::protobuf::io::ZeroCopyOutputStream>
       output(output_directory_->Open(filename));
   Printer printer(output.get(), '$');
 
@@ -343,8 +344,7 @@ void MatlabGenerator::PrintReadFunction(const Descriptor & descriptor) const {
 
   string filename = ReadFunctionName(descriptor);
   filename += ".m";
-  google::protobuf::internal::scoped_ptr<
-    google::protobuf::io::ZeroCopyOutputStream>
+  std::unique_ptr<google::protobuf::io::ZeroCopyOutputStream>
       output(output_directory_->Open(filename));
   Printer printer(output.get(), '$');
 
