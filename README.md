@@ -1,5 +1,6 @@
-protobuf-matlab - FarSounder's Protobuf compiler for Matlab
-Copyright 2011 FarSounder, Inc.
+# protobuf-matlab - FarSounder's Protobuf compiler for Matlab
+## Copyright 2011 FarSounder, Inc.
+
 http://code.google.com/p/protobuf-matlab/
 
 *NOTE(Heath - 04/2024): this is not maintained as we're not really using matlab anymore. Please
