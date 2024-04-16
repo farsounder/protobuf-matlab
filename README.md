@@ -8,7 +8,9 @@ haven't in a long time). Please feel free to use for whatever you want if it hel
 protobuf working with matlab. I'm not sure we'll ever update to latest protobuf version as
 I don't think I have access to a current matlab license to test any changes. If you're inclined
 to PR something, feel free to open and issue first and 'at' me (@heathhenley) or email
-sw@farsounder.com to check so you don't waste any effort. 
+sw@farsounder.com to check so you don't waste any effort. It looks like the most recent fork
+with version updates is [here](https://github.com/rez10191/protobuf-matlab) - maybe that will
+help if you ended up here. 👍
 
 Overview
 ========
