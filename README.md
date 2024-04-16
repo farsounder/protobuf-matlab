@@ -3,12 +3,12 @@
 
 http://code.google.com/p/protobuf-matlab/
 
-*NOTE(Heath - 04/2024): this is not maintained as we're not really using matlab anymore. Please
-feel free to use for whatever you want if it helps you get protobuf working with matlab.
-I'm not sure we'll ever update to latest protobuf version as I don't think I have access
-to a current matlab license to test any changes. If you're inclined to PR something, feel
-free to open and issue first and 'at' me (@heathhenley) or email sw@farsounder.com to check so
-you don't waste any effort. 
+**NOTE(Heath - 04/2024):** this is not maintained as we're not really using matlab anymore (we
+haven't in a long time). Please feel free to use for whatever you want if it helps you get
+protobuf working with matlab. I'm not sure we'll ever update to latest protobuf version as
+I don't think I have access to a current matlab license to test any changes. If you're inclined
+to PR something, feel free to open and issue first and 'at' me (@heathhenley) or email
+sw@farsounder.com to check so you don't waste any effort. 
 
 Overview
 ========
